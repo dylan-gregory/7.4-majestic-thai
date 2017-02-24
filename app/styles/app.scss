@@ -21,3 +21,40 @@ img {
   max-width: 80px;
   max-height: 80px;
 }
+.header::before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(89,15,45, 0.7);
+
+}
+
+.header{
+  height: 400px;
+  font-family: 'Sansita', sans-serif;
+  font-size: 120px;
+  text-align: center;
+  position: relative;
+  background-image: url('../images/Waterfall-Erawan-National-Park-Thailand-017458-1440x900.jpg');
+
+  // background-color: #3B1A9C;
+}
+
+.logo{
+  color: white;
+  max-height: 200px;
+  max-width: 200px;
+  margin-top: 20px;
+  z-index: 30;
+}
+
+.header-text{
+  color: white;
+  display: block;
+  position: relative;
+  bottom: 60px;
+}

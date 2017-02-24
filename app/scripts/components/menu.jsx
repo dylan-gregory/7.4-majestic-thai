@@ -79,9 +79,15 @@ var MenuContainer = React.createClass({
   },
   render: function(){
 
+
     return (
       <div className="wrapper">
-        <div className="header">Majestic Thai</div>
+        <div className="header">
+          <img className="logo" src="https://image.flaticon.com/icons/svg/253/253561.svg" />
+          <span className="header-text">Majestic Thai</span>
+
+
+        </div>
           <div className="container">
             <div className="row">
             </div>
