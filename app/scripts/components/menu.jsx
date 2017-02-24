@@ -9,13 +9,17 @@ var Food = require('../models/models.js').Food;
 var MenuContainer = React.createClass({
   getInitialState: function(){
     var foodCollection = new FoodCollection();
-    console.log(localStorage.getItem('cartedItems'));
+    // console.log(localStorage.getItem('cartedItems'));
 
     var orderCollection = new OrderCollection();
+    console.log(orderCollection);
     orderCollection.fetch();
     // var newSubTotal = this.state.orderCollection.addTotal();
+    if (localStorage.getItem('cartedItems') == null || localStorage.getItem('cartedItems').length == 0) {
+      var total = 0;
+    }else{
     var total = orderCollection.addTotal();
-
+    }
     // var cartTotal = localStorage.getItem('cartedItems');
 
     return {
@@ -44,6 +48,18 @@ var MenuContainer = React.createClass({
     // console.log(this.state.orderCollection);
 
   },
+  deleteFromOrder: function(cartItem){
+
+    var length = this.state.orderCollection.length;
+    var updatedOrder = this.state.orderCollection;
+    cartItem.destroy();
+    this.setState({orderCollection: updatedOrder});
+
+    var newSubTotal = this.state.orderCollection.addTotal();
+
+    this.setState({subTotal: (this.state.orderCollection == null ? 0 : newSubTotal)});
+
+  },
   addToCart: function(food){
     var newOrder = this.state.orderCollection;
     newOrder.create(food.toJSON());
@@ -52,7 +68,14 @@ var MenuContainer = React.createClass({
     var newSubTotal = this.state.orderCollection.addTotal();
 
     this.setState({subTotal: newSubTotal});
-    console.log(this.state.subTotal);
+  },
+  sendOrder: function(order){
+    // var sentOrder = this.state.sentOrder;
+    // sentOrder.create(order);
+    // // this.setState({sentOrder: sentOrder});
+    // localStorage.clear();
+    // this.setState({orderCollection: '', subTotal: 0});
+    // console.log(this.state);
   },
   render: function(){
 
@@ -76,6 +99,8 @@ var MenuContainer = React.createClass({
                   <CartList
                     orderCollection={this.state.orderCollection}
                     subTotal={this.state.subTotal}
+                    deleteFromOrder={this.deleteFromOrder}
+                    sendOrder={this.sendOrder}
 
                   />
 
@@ -131,6 +156,10 @@ var CartList = React.createClass({
 
 // console.log(this.props.orderCollection);
   },
+  // handleDelete: function(menuItem){
+  //
+  //   menuItem.destroy();
+  // },
   render: function(){
     var self = this;
     console.log(this.props.subTotal);
@@ -140,6 +169,10 @@ var CartList = React.createClass({
           <img className="food-img" src={cartItem.get('url')} />
           <h3>{cartItem.get('title')}</h3>
           <span>${cartItem.get('price')}</span>
+          <button onClick={function(event){
+              event.preventDefault();
+              self.props.deleteFromOrder(cartItem);
+            }} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
       );
     });
@@ -153,7 +186,8 @@ var CartList = React.createClass({
         <div>Subtotal:
           <span>${this.props.subTotal==0 ? "0.00" : this.props.subTotal}</span>
         </div>
-        <OrderForm />
+        <OrderForm orderCollection={this.props.orderCollection}
+          sendOrder={this.props.sendOrder}/>
       </div>
     );
   }
@@ -169,9 +203,14 @@ var OrderForm = React.createClass({
   handleSubmit: function(event){
     event.preventDefault();
 
+    this.setState({orderToSend: this.props.orderCollection, });
+
+    this.props.sendOrder(this.state);
 
   },
   render: function(){
+    console.log('this',this.props.orderCollection);
+    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" onChange={this.handleName} placeholder="Your Name" />

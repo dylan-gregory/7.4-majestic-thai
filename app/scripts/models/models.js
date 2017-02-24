@@ -20,7 +20,7 @@ var OrderCollection = Backbone.Collection.extend({
 
     var subtotal = cartItemPrices.reduce(function(memo, num){
       return memo + num;
-    });
+    },0);
     // console.log(cartItemPrices);
     return subtotal.toFixed(2);
   }
