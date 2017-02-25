@@ -2,6 +2,8 @@
 // Bootstrap Variables
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
+$burgundy: #590F2D;
+
 // Import Bootstrap
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
@@ -29,7 +31,8 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(89,15,45, 0.7);
+  background-color: rgba(106,177,147, 0.7);
+  z-index: 1;
 
 }
 
@@ -39,22 +42,24 @@ img {
   font-size: 120px;
   text-align: center;
   position: relative;
-  background-image: url('../images/Waterfall-Erawan-National-Park-Thailand-017458-1440x900.jpg');
+  background-image: url('../images/header-background.jpg');
 
   // background-color: #3B1A9C;
 }
 
 .logo{
-  color: white;
+  position: relative;
   max-height: 200px;
   max-width: 200px;
   margin-top: 20px;
-  z-index: 30;
+  z-index: 80;
+
 }
 
 .header-text{
   color: white;
   display: block;
   position: relative;
-  bottom: 60px;
+  bottom: 35px;
+  z-index: 80;
 }
