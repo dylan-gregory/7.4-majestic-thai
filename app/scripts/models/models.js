@@ -26,11 +26,14 @@ var OrderCollection = Backbone.Collection.extend({
   }
 });
 
-
-//will call this wherever I need the subtotal to be show like this.props.orderCollection.subtotal()
+var SentOrderCollection = Backbone.Collection.extend({
+  model: Food,
+  url: 'https://tiny-lasagna-server.herokuapp.com/collections/thaiorders'
+});
 
 module.exports = {
   Food,
   FoodCollection,
-  OrderCollection
+  OrderCollection,
+  SentOrderCollection
 };

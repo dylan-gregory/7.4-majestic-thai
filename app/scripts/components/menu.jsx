@@ -5,12 +5,15 @@ var _ = require ('underscore');
 var FoodCollection = require('../models/models.js').FoodCollection;
 var OrderCollection = require('../models/models.js').OrderCollection;
 var Food = require('../models/models.js').Food;
+var SentOrderCollection = require('../models/models.js').SentOrderCollection;
+
+
 
 var MenuContainer = React.createClass({
   getInitialState: function(){
     var foodCollection = new FoodCollection();
     // console.log(localStorage.getItem('cartedItems'));
-
+    var sentOrderCollection = new SentOrderCollection();
     var orderCollection = new OrderCollection();
     console.log(orderCollection);
     orderCollection.fetch();
@@ -25,6 +28,7 @@ var MenuContainer = React.createClass({
     return {
       foodCollection: foodCollection,
       orderCollection: orderCollection,
+      sentOrderCollection: sentOrderCollection,
       subTotal: total
     };
   },
@@ -41,11 +45,6 @@ var MenuContainer = React.createClass({
 
     this.setState({foodCollection: newFoodCollection,
                     });
-
-  },
-  componentDidMount: function(){
-    // var newSubTotal = this.state.orderCollection.addTotal();
-    // console.log(this.state.orderCollection);
 
   },
   deleteFromOrder: function(cartItem){
@@ -70,12 +69,14 @@ var MenuContainer = React.createClass({
     this.setState({subTotal: newSubTotal});
   },
   sendOrder: function(order){
-    // var sentOrder = this.state.sentOrder;
-    // sentOrder.create(order);
-    // // this.setState({sentOrder: sentOrder});
-    // localStorage.clear();
-    // this.setState({orderCollection: '', subTotal: 0});
-    // console.log(this.state);
+    console.log("new order", order);
+    var orderToSend = this.state.sentOrderCollection;
+    orderToSend.create(order);
+    this.setState({sentOrderCollection: orderToSend});
+
+    this.setState({orderCollection: new OrderCollection(), sentOrderCollection: '' , subTotal: 0});
+    localStorage.clear();
+
   },
   render: function(){
 
@@ -122,6 +123,8 @@ var MenuContainer = React.createClass({
   }
 });
 
+
+
 var MenuList = React.createClass({
   render: function(){
     var self = this;
@@ -154,10 +157,11 @@ var MenuList = React.createClass({
   }
 });
 
+
+
 var CartList = React.createClass({
   getInitialState: function(){
     var cartItems = this.props.orderCollection;
-    console.log('cart-items', this.props.orderCollection);
     return {cartItems: cartItems};
 
 // console.log(this.props.orderCollection);
@@ -199,6 +203,8 @@ var CartList = React.createClass({
   }
 });
 
+
+
 var OrderForm = React.createClass({
   handleName: function(event){
     this.setState({name: event.target.value});
@@ -209,14 +215,13 @@ var OrderForm = React.createClass({
   handleSubmit: function(event){
     event.preventDefault();
 
-    this.setState({orderToSend: this.props.orderCollection, });
+    this.setState({sentOrderCollection: localStorage.getItem('cartedItems')});
 
     this.props.sendOrder(this.state);
 
   },
   render: function(){
-    console.log('this',this.props.orderCollection);
-    console.log(this.state);
+
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" onChange={this.handleName} placeholder="Your Name" />
