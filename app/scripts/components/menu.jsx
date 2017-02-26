@@ -130,23 +130,27 @@ var MenuList = React.createClass({
     var self = this;
     var menuFoodView = this.props.foodCollection.map(function(food){
       return (
-        <div key={food.cid}>
-          <img className="food-img" src={food.get('url')} />
-          <h3>{food.get('title')}</h3>
-          <p>{food.get('description')}</p>
-          <span>${food.get('price')}</span>
-          <button onClick={function(event){
-                event.preventDefault();
-                self.props.addToCart(food);
-              }}
-              className="btn btn-primary">Add to cart</button>
+        <div className="menu-parent" key={food.cid}>
+          <h3><i className="fa fa-envira" aria-hidden="true"></i> <span className="food-title">{food.get('title')}</span></h3>
+          <div className="menu-item" >
+            <img className="food-img" src={food.get('url')} />
+            <span className="food-description">{food.get('description')}</span>
+            <div>
+              <span className="food-price">${food.get('price')}</span>
+              <button onClick={function(event){
+                  event.preventDefault();
+                  self.props.addToCart(food);
+                }}
+                className="btn btn-primary add-button">Add to cart</button>
+            </div>
+          </div>
         </div>
       )
     });
 
     return (
       <div className="menu-view">
-        <h2>Menu List</h2>
+        <h2>Explore our menu:</h2>
         <ul>
 
           {menuFoodView}
@@ -175,26 +179,28 @@ var CartList = React.createClass({
     console.log(this.props.subTotal);
     var cartItemList = this.props.orderCollection.map(function(cartItem){
       return (
-        <div key={cartItem.cid}>
-          <img className="food-img" src={cartItem.get('url')} />
-          <h3>{cartItem.get('title')}</h3>
-          <span>${cartItem.get('price')}</span>
+
+        <div className="cart-item" key={cartItem.cid}>
+          <img className="cart-img" src={cartItem.get('url')} />
+          <span className="cart-title">{cartItem.get('title')}</span>
+          <span className="cart-price">| ${cartItem.get('price')}</span>
           <button onClick={function(event){
               event.preventDefault();
               self.props.deleteFromOrder(cartItem);
             }} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
         </div>
       );
     });
 
     return (
       <div className="well">
-        <h2>Cart View</h2>
-        <ul>
+        <h2>Your Order:</h2>
+        <ul className="cart-list">
           {cartItemList}
         </ul>
-        <div>Subtotal:
-          <span>${this.props.subTotal==0 ? "0.00" : this.props.subTotal}</span>
+        <div className="cart-subtotal well">Subtotal:
+          <span className="subtotal-price">| ${this.props.subTotal==0 ? "0.00" : this.props.subTotal}</span>
         </div>
         <OrderForm orderCollection={this.props.orderCollection}
           sendOrder={this.props.sendOrder}/>
@@ -224,8 +230,8 @@ var OrderForm = React.createClass({
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" onChange={this.handleName} placeholder="Your Name" />
-        <input type="text" onChange={this.handleNumber} placeholder="Your Phone Number" />
+        <input type="text" className="form-control order-input" onChange={this.handleName} placeholder="Your Name" />
+        <input type="text" className="form-control order-input" onChange={this.handleNumber} placeholder="Your Phone Number" />
 
 
         <button className="btn btn-success">Place my order!</button>

@@ -18,11 +18,7 @@ img {
   max-width: 100%;
 }
 
-// just to get it to a reasonable size for now
-.food-img{
-  max-width: 80px;
-  max-height: 80px;
-}
+
 .header::before{
   content: '';
   display: block;
@@ -62,4 +58,94 @@ img {
   position: relative;
   bottom: 35px;
   z-index: 80;
+}
+
+.menu-parent{
+
+}
+
+.menu-item{
+  border-bottom: 1px solid #CCCCCC;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.food-img{
+  max-width: 80px;
+  max-height: 80px;
+  border: 2px solid #C97247;
+  border-radius: 5px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.food-description{
+  margin-left: 10px;
+}
+
+.price-button{
+  float: right;
+
+}
+
+.food-price{
+  vertical-align: middle;
+}
+
+.food-price{
+  margin-right: 10px;
+}
+
+.food-title{
+  // margin-left: 10px;
+}
+
+.add-button{
+  background-color: #D18183;
+  border: 1px solid #A4805C;
+}
+
+.fa-envira{
+  color: #3CA295;
+}
+
+.order-input{
+  margin-bottom: 10px;
+}
+
+.cart-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cart-img{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.cart-title{
+  font-size: 18px;
+}
+
+.cart-price{
+  font-size: 18px;
+}
+
+.cart-subtotal{
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtotal-price{
+  padding-right: 38px;
+
+}
+
+.cart-list{
+  padding-left: 0;
 }
