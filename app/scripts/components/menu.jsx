@@ -115,8 +115,14 @@ var MenuContainer = React.createClass({
               </div>
             </div>
           </div>
-        <div className="footer">
-          Cool links to yelp, openTable, logos, yada yada yada...
+        <div className="footer row">
+          <div className="col-md-4 yelp-note"><div>How was your meal? Let us know on Yelp</div><i className="fa fa-yelp" aria-hidden="true"></i></div>
+          <div className="col-md-4 social-notes"><div>Want to connect?</div>
+          <i className="fa fa-instagram" aria-hidden="true"></i>
+          <i className="fa fa-facebook-square" aria-hidden="true"></i>
+          <i className="fa fa-twitter-square" aria-hidden="true"></i></div>
+          <div className="col-md-4 lemon"><div>(And here's a bonus little lemon)</div> <i className="fa fa-lemon-o" aria-hidden="true"></i></div>
+
         </div>
       </div>
     );
@@ -179,28 +185,31 @@ var CartList = React.createClass({
     console.log(this.props.subTotal);
     var cartItemList = this.props.orderCollection.map(function(cartItem){
       return (
+        <div className="cart-item row" key={cartItem.cid}>
+          <div className="col-md-9 cart-pic-name">
+            <img className="cart-img" src={cartItem.get('url')} />
+            <span className="cart-title">{cartItem.get('title')}</span>
+          </div>
+          <div className="price-box col-md-3">
+            <span className="cart-price"> ${cartItem.get('price')}</span>
+            <button onClick={function(event){
+                event.preventDefault();
+                self.props.deleteFromOrder(cartItem);
+              }} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-        <div className="cart-item" key={cartItem.cid}>
-          <img className="cart-img" src={cartItem.get('url')} />
-          <span className="cart-title">{cartItem.get('title')}</span>
-          <span className="cart-price">| ${cartItem.get('price')}</span>
-          <button onClick={function(event){
-              event.preventDefault();
-              self.props.deleteFromOrder(cartItem);
-            }} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
+            </div>
         </div>
       );
     });
 
     return (
-      <div className="well">
+      <div className="cart-orders well">
         <h2>Your Order:</h2>
         <ul className="cart-list">
           {cartItemList}
         </ul>
         <div className="cart-subtotal well">Subtotal:
-          <span className="subtotal-price">| ${this.props.subTotal==0 ? "0.00" : this.props.subTotal}</span>
+          <span className="subtotal-price">${this.props.subTotal==0 ? "0.00" : this.props.subTotal}</span>
         </div>
         <OrderForm orderCollection={this.props.orderCollection}
           sendOrder={this.props.sendOrder}/>

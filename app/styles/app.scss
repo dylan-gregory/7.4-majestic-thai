@@ -129,23 +129,124 @@ img {
 
 .cart-title{
   font-size: 18px;
+  margin-left: 10px;
 }
+
 
 .cart-price{
   font-size: 18px;
+  margin-right: 7px;
 }
 
 .cart-subtotal{
   font-size: 18px;
   display: flex;
   justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #3CA295;
 }
 
 .subtotal-price{
-  padding-right: 38px;
+
 
 }
 
 .cart-list{
   padding-left: 0;
+}
+
+.cart-pic-name{
+  padding-right: 0px;
+}
+
+.price-box{
+  display: flex;
+  align-items: center;
+}
+
+.cart-orders{
+  margin-top: 50px;
+}
+
+.footer{
+  position: relative;
+  color: white;
+  height: 150px;
+  background-image: url('../images/header-background.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 18px;
+
+  .yelp-note{
+    position: relative;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .social-notes{
+    position: relative;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .fa-yelp{
+    position: relative;
+    z-index: 80;
+    font-size: 60px;
+  }
+
+  .fa-lemon-o{
+    position: relative;
+    z-index: 80;
+    font-size: 60px;
+  }
+
+  .fa-instagram{
+    position: relative;
+    z-index: 80;
+    font-size: 60px;
+  }
+
+  .fa-facebook-square{
+    position: relative;
+    z-index: 80;
+    font-size: 60px;
+  }
+
+  .fa-twitter-square{
+    position: relative;
+    z-index: 80;
+    font-size: 60px;
+
+  }
+
+  .lemon{
+    position: relative;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+  }
+
+
+}
+
+.footer::after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(106,177,147, 0.7);
+  z-index: 1;
+
 }
