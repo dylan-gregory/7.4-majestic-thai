@@ -1,0 +1,305 @@
+
+// Bootstrap Variables
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+$burgundy: #590F2D;
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.body{
+  position: relative;
+}
+
+.header::before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(106,177,147, 0.7);
+  z-index: 1;
+
+}
+
+.header{
+  height: 400px;
+  font-family: 'Sansita', sans-serif;
+  font-size: 120px;
+  text-align: center;
+  position: relative;
+  background-image: url('../images/header-background.jpg');
+
+  // background-color: #3B1A9C;
+}
+
+.logo{
+  position: relative;
+  max-height: 200px;
+  max-width: 200px;
+  margin-top: 20px;
+  z-index: 80;
+
+}
+
+.header-text{
+  color: white;
+  display: block;
+  position: relative;
+  bottom: 35px;
+  z-index: 80;
+}
+
+.menu-view{
+  margin-top: 50px;
+}
+
+.menu-item{
+  border-bottom: 1px solid #CCCCCC;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.food-img{
+  max-width: 80px;
+  max-height: 80px;
+  border: 2px solid #C97247;
+  border-radius: 5px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.food-description{
+  margin-left: 10px;
+}
+
+.price-button{
+  float: right;
+
+}
+
+.food-price{
+  vertical-align: middle;
+}
+
+.food-price{
+  margin-right: 10px;
+}
+
+
+.add-button{
+  background-color: #1B4553;
+  border: 1px solid #3CA295;
+}
+
+.add-button:hover{
+  background-color: #E58C8E;
+  border: 1px solid #D18183;
+}
+
+.fa-envira{
+  color: #3CA295;
+}
+
+.order-input{
+  margin-bottom: 10px;
+}
+
+.cart-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cart-img{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.cart-title{
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+
+.cart-price{
+  font-size: 18px;
+  margin-right: 7px;
+}
+
+.cart-subtotal{
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #3CA295;
+}
+
+
+
+.cart-list{
+  padding-left: 0;
+}
+
+.cart-pic-name{
+  padding-right: 0px;
+}
+
+.price-box{
+  display: flex;
+  align-items: center;
+}
+
+.cart-orders{
+  margin-top: 50px;
+}
+
+.footer{
+  position: relative;
+  color: white;
+  height: 150px;
+  background-image: url('../images/header-background.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 17px;
+
+  .yelp-note{
+    position: relative;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+  }
+
+  .social-notes{
+    position: relative;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .fa-yelp{
+    position: relative;
+    z-index: 80;
+    font-size: 50px;
+  }
+
+  .fa-yelp:hover{
+    color: red;
+  }
+
+
+  .fa-lemon-o{
+    position: relative;
+    z-index: 80;
+    font-size: 40px;
+  }
+
+  .fa-lemon-o:hover{
+    color: yellow;
+  }
+
+  .fa-instagram{
+    position: relative;
+    z-index: 80;
+    font-size: 50px;
+  }
+
+  .fa-instagram:hover{
+    color: purple;
+  }
+
+  .fa-facebook-square{
+    position: relative;
+    z-index: 80;
+    font-size: 50px;
+  }
+
+  .fa-facebook-square:hover{
+    color: #3B5998;
+  }
+
+  .fa-twitter-square{
+    position: relative;
+    z-index: 80;
+    font-size: 50px;
+
+  }
+
+  .fa-twitter-square:hover{
+    color: #1DA1F2;
+  }
+
+  .lemon{
+    position: relative;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+  }
+
+
+}
+
+.footer::after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(106,177,147, 0.7);
+  z-index: 1;
+
+}
+
+.thank-you{
+  font-family: 'Sansita', sans-serif;
+  background-color: #1B4553;
+  border-radius: 5px;
+}
+
+.thanks{
+  font-size: 35px;
+  color: white;
+}
+
+.food-ready{
+  font-size: 25px;
+}
+
+.fa-cutlery{
+  margin-right: 10px;
+}
+
+.affix{
+  bottom: 10px;
+  width: 400px;
+}
