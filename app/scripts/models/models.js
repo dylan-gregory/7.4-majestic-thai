@@ -10,6 +10,7 @@ var FoodCollection = Backbone.Collection.extend({
 });
 
 // this will be for the items added into the cart
+// could set up an Order model, which will allow duplicates on the server and give them a new cid for each order item
 var OrderCollection = Backbone.Collection.extend({
   model: Food,
   localStorage: new Backbone.LocalStorage('cartedItems'),
@@ -25,6 +26,8 @@ var OrderCollection = Backbone.Collection.extend({
     return subtotal.toFixed(2);
   }
 });
+
+// could just send the name and number of the items order to the kitchen -aka to tiny lasagna
 
 var SentOrderCollection = Backbone.Collection.extend({
   model: Food,

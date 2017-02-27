@@ -71,6 +71,7 @@
     ]
   },
   "dependencies": {
+    "backbone.localstorage": "^1.1.16",
     "react-bootstrap": "^0.30.7"
   }
 }
