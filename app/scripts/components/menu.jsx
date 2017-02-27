@@ -21,6 +21,9 @@ var MenuContainer = React.createClass({
     var orderCollection = new OrderCollection();
     console.log(orderCollection);
     orderCollection.fetch();
+    // orderCollection.fetch().done(function(){
+    //
+    // });
 
     if (localStorage.getItem('cartedItems') == null || localStorage.getItem('cartedItems').length == 0) {
       var total = 0;
@@ -277,29 +280,29 @@ var OrderForm = React.createClass({
 
 
 var ConfirmationModal = React.createClass({
-  getInitialState() {
+  getInitialState: function() {
     return {showModal: false};
   },
   componentWillReceiveProps: function(openModal) {
   this.setState({showModal: this.props.openModal});
   // this.setState({showModal: false});
   },
-  close() {
+  close: function() {
     this.props.closeModal();
     this.setState({ showModal: false });
   },
 
-  open() {
+  open: function() {
     this.setState({ showModal: true });
   },
-  openModal() {
+  openModal: function() {
     //
     // this.props.openModal();
     // this.setState({showModal: this.props.openModal});
 
   },
 
-  render() {
+  render: function() {
 
     return (
       <div>
