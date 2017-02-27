@@ -25,6 +25,7 @@ a{
 
 .body{
   position: relative;
+  font-family: "Helvetica", sans-serif;
 }
 
 .header::before{
@@ -78,6 +79,7 @@ a{
   align-items: center;
   justify-content: space-between;
   font-size: 18px;
+  padding-bottom: 40px;
 }
 
 .food-img{
@@ -86,11 +88,13 @@ a{
   border: 2px solid #C97247;
   border-radius: 5px;
   margin-left: 30px;
-  margin-bottom: 10px;
+
+
 }
 
 .food-description{
   margin-left: 10px;
+
 }
 
 .price-button{
