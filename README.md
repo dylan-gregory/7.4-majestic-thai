@@ -1,4 +1,4 @@
-## 7 4 majestic thai
+## 7.4 - Majestic Thai
 
 Majestic Thai was one of my favorite projects from my time at The Iron Yard. We were tasked with building an online webstore for a thai restaurant, capable of adding food items to a cart, calculating a subtotal, and submitting an order.
 
